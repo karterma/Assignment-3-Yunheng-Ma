@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .ic {
+      position: relative;
+      display: inline-block;
+    }
+
+    .ic img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .ca {
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="ic">
+    <img src="First Page.png" onclick="cc(10)">
+    <div class="ca" style="right:0; bottom: 0; width: 20%; height: 40%;" onclick="cc(1)"></div>
+  </div>
+
+  <div class="ic">
+    <img src="product.png" onclick="cc(10)">
+    <div class="ca" style="left: 0; top: 0; width: 50%; height: 50%;" onclick="cc(2)"></div>
+  </div>
+
+  <div class="ic">
+    <img src="product1.png" onclick="cc(10)">
+    <div class="ca" style="right: 0; top: 0; width: 15%; height: 15%;" onclick="cc(3)"></div>
+  </div>
+  
+  <div class="ic">
+    <img src="p1c.png" onclick="cc(10)">
+    <div class="ca" style="right: 0; top: 0; width: 40%; height: 42%;" onclick="cc(4)"></div>
+  </div>
+
+  <div class="ic">
+    <img src="product2.png" onclick="cc(10)">
+    <div class="ca" style="right: 0; top: 0; width: 25%; height: 55%;" onclick="cc(5)"></div>
+  </div>
+  
+  <div class="ic">
+    <img src="sc.png" onclick="cc(4)">
+    <div class="ca" style="right: 0; top: 0; width: 50%; height: 50%;" onclick="cc(6)"></div>
+  </div>
+
+  <script>
+    var igs = ["First Page.png", "product.png", "product1.png", "p1c.png", "product2.png", "sc.png"];
+    var cI = 0;
+    var iCs = document.querySelectorAll(".ic");
+
+    function cc(index) {
+      cI = index;
+      if (cI >= igs.length) {
+        cI = 0;
+      }
+      upI();
+    }
+
+    function upI() {
+      for (var i = 0; i < iCs.length; i++) {
+        var iC = iCs[i];
+        var ig = iC.querySelector("img");
+        var cA = iC.querySelector(".ca");
+
+        if (i === cI) {
+          ig.style.display = "block";
+          cA.style.display = "block";
+        } else {
+          ig.style.display = "none";
+          cA.style.display = "none";
+        }
+      }
+    }
+
+    var cAs = document.querySelectorAll(".ca");
+
+    for (var i = 0; i < cAs.length; i++) {
+      var cA = cAs[i];
+
+      cA.addEventListener("click", function(event) {
+        event.stopPropagation();
+      });
+    }
+
+    upI();
+  </script>
+</body>
+</html>
+
+
